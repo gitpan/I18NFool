@@ -83,10 +83,21 @@ sub _process
 
             $translate_id || next;
             $Results->{$Domain} ||= {};
-            $Results->{$Domain}->{$translate_id} = Locale::PO->new (
+
+            my $existing_po = $Results->{$Domain}->{$translate_id};
+            my $new_po = Locale::PO->new (
                 -msgid  => $translate_id,
                 -msgstr => _canonicalize ( $tree->{$attribute_name} ) || '',
             );
+
+            if ($existing_po && ($existing_po->{msgstr} ne $new_po->{msgstr}))
+            {
+                print STDERR "String for '$translate_id' doesn't match:\n".
+                             "   old: $existing_po->{msgstr}\n".
+                             "   new: $new_po->{msgstr}\n"
+            }
+
+            $Results->{$Domain}->{$translate_id} = $new_po;
         }
     };
 
@@ -112,10 +123,21 @@ sub _process
 
         $translate_id || next;
         $Results->{$Domain} ||= {};
-        $Results->{$Domain}->{$translate_id} = Locale::PO->new (
+
+        my $existing_po = $Results->{$Domain}->{$translate_id};
+        my $new_po = Locale::PO->new (
             -msgid  => $translate_id,
             -msgstr => _canonicalize ( _extract_content_string ($tree) ) || '',
         );
+
+        if ($existing_po && ($existing_po->{msgstr} ne $new_po->{msgstr}))
+        {
+            print STDERR "String for '$translate_id' doesn't match:\n".
+                         "   old: $existing_po->{msgstr}\n".
+                         "   new: $new_po->{msgstr}\n"
+        }
+
+        $Results->{$Domain}->{$translate_id} = $new_po;
     };
 
     # I know, I know, the I18N namespace processing is a bit broken...

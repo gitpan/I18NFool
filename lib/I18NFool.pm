@@ -6,7 +6,7 @@ use Locale::PO;
 use warnings;
 use strict;
 
-our $VERSION = 0.3;
+our $VERSION = 0.31;
 
 sub create_potfiles
 {

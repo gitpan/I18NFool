@@ -1,5 +1,8 @@
 Revision history for I18NFool.
 
+0.31 Thu Oct 07 11:24:00 2004
+    - Added warnings when keys with non-identical attributes are clobbered
+
 0.3 Wed Oct 06 12:58:00 2004
     - Fixed documentation s/i18n-update/i18nfool-update/
                           s/i18n-build/i18nfool-build/
