@@ -1,0 +1,15 @@
+bin/i18nfool-build
+bin/i18nfool-extract
+bin/i18nfool-update
+Changes
+lib/I18NFool.pm
+lib/I18NFool/Extractor.pm
+lib/I18NFool/ExtractorMerger.pm
+Makefile.PL
+MANIFEST			This list of files
+META.yml			Module meta-data (added by MakeMaker)
+README
+t/001_I18NFool_Extractor_Namespaces.t
+t/002_I18NFool_Extractor_Domains.t
+t/003_I18NFool_Extractor_Merge.t
+t/004_I18NFool_Extractor_Name.t
