@@ -60,7 +60,7 @@ sub _process
         my $attributes = $tree->{"$Prefix:attributes"};
         $attributes =~ s/\s*;\s*$//;
         $attributes =~ s/^\s*//;
-        my @attributes = split /\s+\;\s+/, $attributes;
+        my @attributes = split /\s*\;\s*/, $attributes;
         foreach my $attribute (@attributes)
         {
             # if we have i18n:attributes="alt alt_text", then the
@@ -81,8 +81,12 @@ sub _process
                 $translate_id = _canonicalize ( $tree->{$attribute_name} );
             }
 
+            $translate_id || next;
             $Results->{$Domain} ||= {};
-            $Results->{$Domain}->{$translate_id} = Locale::PO->new (-msgid => $translate_id, -msgstr => '');       
+            $Results->{$Domain}->{$translate_id} = Locale::PO->new (
+                -msgid  => $translate_id,
+                -msgstr => _canonicalize ( $tree->{$attribute_name} ) || '',
+            );
         }
     };
 
@@ -106,8 +110,12 @@ sub _process
             $translate_id = _canonicalize ( _extract_content_string ($tree) );
         }
 
+        $translate_id || next;
         $Results->{$Domain} ||= {};
-        $Results->{$Domain}->{$translate_id} = Locale::PO->new (-msgid => $translate_id, -msgstr => '');
+        $Results->{$Domain}->{$translate_id} = Locale::PO->new (
+            -msgid  => $translate_id,
+            -msgstr => _canonicalize ( _extract_content_string ($tree) ) || '',
+        );
     };
 
     # I know, I know, the I18N namespace processing is a bit broken...
@@ -127,7 +135,7 @@ sub _process
 
 sub _canonicalize
 {
-    my $string = shift;
+    my $string = shift || '';
     $string =~ s/\s+/ /gsm;
     $string =~ s/^ //;
     $string =~ s/ $//;

@@ -1,4 +1,10 @@
 Revision history for I18NFool.
 
+0.2 Wed Jul 28 11:10:20 2004
+    - Fixed i18nfool-extract attributes parsing
+    - Fixed i18nfool-extract producing corrupted po files
+    - Fixed i18nfool-extract dying on non-well formed XML
+    - Fixed i18nfool-extract ignoring first file to extract
+
 0.1
     - Initial release 

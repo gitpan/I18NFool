@@ -7,9 +7,10 @@ lib/I18NFool/Extractor.pm
 lib/I18NFool/ExtractorMerger.pm
 Makefile.PL
 MANIFEST			This list of files
-META.yml			Module meta-data (added by MakeMaker)
+META.yml
 README
 t/001_I18NFool_Extractor_Namespaces.t
 t/002_I18NFool_Extractor_Domains.t
 t/003_I18NFool_Extractor_Merge.t
 t/004_I18NFool_Extractor_Name.t
+t/005_I18NFool_Extractor_Attributes.t

@@ -6,7 +6,7 @@ use Locale::PO;
 use warnings;
 use strict;
 
-our $VERSION = 0.1;
+our $VERSION = 0.2;
 
 sub create_potfiles
 {
@@ -28,13 +28,13 @@ sub create_potfiles
         my $data = join '', <FP>;
         close FP;
 
-        my $domain_hash = I18NFool::Extractor->process ($data);
+        my $domain_hash = eval { I18NFool::Extractor->process ($data) };
         if ($@) { print STDERR "I18NFool::Extractor died parsing $file. Reason:\n\n$@\n\n" }
         else    { push @domain_hashes, $domain_hash }
     }
 
     print "Merging...\n";
-    my $domain_hash = I18NFool::ExtractorMerger::process (@domain_hashes);
+    my $domain_hash = I18NFool::ExtractorMerger->process (@domain_hashes);
 
     foreach my $domain_key (keys %{$domain_hash})
     {
