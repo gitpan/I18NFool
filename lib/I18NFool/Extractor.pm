@@ -136,6 +136,8 @@ sub _process
 sub _canonicalize
 {
     my $string = shift || '';
+    $string =~ s/\r/ /g;
+    $string =~ s/\n/ /g;
     $string =~ s/\s+/ /gsm;
     $string =~ s/^ //;
     $string =~ s/ $//;

@@ -34,7 +34,9 @@ This module requires these other modules and libraries:
 
 AUTHORS & LICENSE
 
-  (C) Jean-Michel Hiver <jhiver@mkdoc.com> and
+  (C) Copyright 2004 MKDoc Ltd. and Laurent Bedubourg
+
+  Authors Jean-Michel Hiver and
       Laurent Bedubourg <lbedubourg@motion-twin.com>.
 
   All rights reserved.

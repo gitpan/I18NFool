@@ -6,7 +6,7 @@ use Locale::PO;
 use warnings;
 use strict;
 
-our $VERSION = 0.2;
+our $VERSION = 0.3;
 
 sub create_potfiles
 {
@@ -103,7 +103,7 @@ Create one directory for each language which will need to be translated.
 Then run the i18n-update tool.
 
   cd /opt/myapp/locale
-  i18n-update
+  i18nfool-update
 
 i18n-update will *not* erase your existing .po files, it will update them
 nicely using gettext's msgmerge tool.
@@ -117,7 +117,7 @@ Once you are happy with your set of .po files, it's time to build the .mo files
 which are going to be used by your application, for example using
 L<Locale::MakeText::Gettext>.
 
- cd /opt/myapp/locale i18n-build
+ cd /opt/myapp/locale i18nfool-build
 
 
 =head1 BUGS. 
@@ -128,8 +128,10 @@ welcome. Patches will do your karma real good.
 
 AUTHORS & LICENSE
 
-  (C) Jean-Michel Hiver <jhiver@mkdoc.com> and
-      Laurent Bedubourg <lbedubourg@motion-twin.com>.
+  (C) Copyright 2004 MKDoc Ltd. and Laurent Bedubourg
+
+    Authors Jean-Michel Hiver and
+    Laurent Bedubourg <lbedubourg@motion-twin.com>.
 
   This module is free software, it is distributed under the
   same license as Perl itself.

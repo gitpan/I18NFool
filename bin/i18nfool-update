@@ -18,10 +18,10 @@ i18n_fool_sync()
       if test -f "$dir/LC_MESSAGES/$domain.po"
       then
          echo -n "  - updating domain '$domain'"
-         msgmerge -U --force-po $dir/LC_MESSAGES/$domain.po $domain_file
+         msgmerge -U -N --force-po $dir/LC_MESSAGES/$domain.po $domain_file
       else
          echo -n "  - creating domain '$domain' "
-         msginit --no-translator -l $dir -i $domain_file -o $dir/LC_MESSAGES/$domain.po
+         msginit --no-translator -l "$dir.UTF-8" -i $domain_file -o $dir/LC_MESSAGES/$domain.po
       fi
    done
 }
